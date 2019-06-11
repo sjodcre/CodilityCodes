@@ -45,53 +45,23 @@
 // console.log('this is a debug message');
 
 function solution(X, A) {
-    // write your code in JavaScript (Node.js 8.9.4)
-    // store them into an object first
-    // if the indexes before the X has all the values 
-    let objA = {};
-    let x = -1;
-    let y;
-    let max = 1;
-    for (let i =0;i<A.length;i++) {
-        if(!objA[A[i]]) {
-            objA[A[i]] = i;
-        }
-        
+    
+    let boolArray = [];
+    for (let i =0; i<X; i++) {
+        boolArray[i]= false;
     }
-    console.log(objA);
-    // console.log(x);
-    y = check(X,objA);
-    // console.log(x);
-    if (y=== 1) {
-        x = objA[X];
-    } else {
-        for  (let i = A.indexOf(X); i< A.length; i++) {
-            console.log(A.indexOf(X))
-            console.log('i',i);
-            objA[A[i]] = i;
-            if (i> max) {
-                console.log('max',max)
-                max = objA[A[i]];
-            }
-        }
-        y = check(X, objA);
-        if (y===1) {
-            // console.log('max2',max)
-            x = max;
-        } 
-    }
-    return x;
-}
+    
+    for (let i =0 ; i<A.length;i++) {
+        if(!boolArray[A[i]-1]) {
+            boolArray[A[i]-1] = true;
 
-function check(X, Obj) {
-    
-    // console.log(X,!Obj[X-1]);
-    if (X <2) {
-        return 1;
-    }else if (Obj[X-1]===undefined) {
-        return -1;
-    } else {
-        return check(X-1,Obj);
+            // console.log('wtf', --X==0);
+            if (--X == 0) {
+                return i;
+            }
+        
+        }
     }
     
+    return -1;   
 }
