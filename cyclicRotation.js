@@ -49,3 +49,21 @@ function solution(A, K) {
     // console.log(A)
     return A;
 }
+
+// alternate solution
+function solution(A, K) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    let arrToReturn = [];
+    
+    let len = A.length;
+    if (A === undefined || A.length < 2 || K === len  ) {
+        return A;
+    }
+    K = K%len;
+    for (let i = 0 ; i< K; i++) {
+           arrToReturn.push(A.pop()); 
+    }
+    arrToReturn = arrToReturn.reverse();
+    arrToReturn = arrToReturn.concat(A); 
+    return arrToReturn;
+}
