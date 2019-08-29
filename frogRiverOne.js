@@ -65,3 +65,25 @@ function solution(X, A) {
     
     return -1;   
 }
+
+// alternate
+function solution(X, A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    let len = A.length;
+    let n = 0;
+    let totalLeaves = X;
+    let leaves = {}
+    while (n < len) {
+        if(leaves[A[n]]===undefined) {
+            leaves[A[n]] = A[n];
+            totalLeaves -=1;
+            
+            if (totalLeaves === 0){
+                return n;
+            }
+        }
+        n++;   
+    }
+    return -1;
+}
+
