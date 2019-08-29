@@ -60,3 +60,24 @@ function solution(A) {
     }
     return 1;
 }
+
+// alternate
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    let len = A.length;
+    let total = len*(len+1)/2;
+    let repeatArr = {};
+    let actualTotal = A.reduce((a, b) => a + b, 0);
+    if (total != actualTotal) {
+        return 0;
+    } else {
+        for (let i = 0; i < len; i++ ){
+            if(repeatArr[A[i]] === undefined) {
+                repeatArr[A[i]] = A[i];
+            } else {
+                return 0;
+            }
+        }
+        return 1;
+    }
+}
