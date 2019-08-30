@@ -47,3 +47,34 @@ function solution(A) {
     
     return x;  
 }
+
+// alternate solution
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    let sortA = A.sort(function(a, b){return a-b});
+    // console.log("sortA " + sortA);
+    let numArr = {};
+    let len = A.length;
+    let sum = 0;
+    let actualSum = 0;
+    let counter = 1;
+    for (let i =0 ; i < len; i++) {
+        if (sortA[i] > 0 && numArr[sortA[i]]===undefined) {
+            numArr[sortA[i]] = sortA[i];
+            sum += sortA[i];
+            // console.log("sum " +sum);
+            actualSum += counter;
+            // console.log("actual sum " +actualSum);            
+            if (sum!== actualSum) {
+                return counter;
+            }
+            counter++;
+        }
+        
+    }
+
+return counter;   
+}
